@@ -8,17 +8,17 @@ export interface Palette {
   background: {
     default: string;
     surface: string;
-  }
+  };
   text: {
     default: string;
     disabled: string;
-  }
+  };
   interactivity: {
     active: string;
     hover: string;
     selected: string;
     // TODO: define other states
-  }
+  };
   primary: Color;
   secondary: Color;
   divider: string;
@@ -34,13 +34,13 @@ export interface Color {
 }
 
 export interface Typography {
-  body: TypographDefinition;
-  bodyLarge: TypographDefinition;
-  navigation: TypographDefinition;
-  heading3: TypographDefinition;
+  body: TypographyDefinition;
+  bodyLarge: TypographyDefinition;
+  navigation: TypographyDefinition;
+  heading3: TypographyDefinition;
 }
 
-export interface TypographDefinition {
+export interface TypographyDefinition {
   fontFamily: string;
   fontSize: string;
   lineHeight: number | string;

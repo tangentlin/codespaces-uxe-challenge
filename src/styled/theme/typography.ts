@@ -1,42 +1,41 @@
-import { TypographDefinition, Typography } from "./Theme";
-import { getSize, parseSize } from "./styleUtil";
+import { Typography, TypographyDefinition } from './Theme';
+import { getSize, parseSize } from './styleUtil';
 
 export function createTypography(fontFamily: string, baseSize: string): Typography {
   const parsedSize = parseSize(baseSize);
-  
-  const body: TypographDefinition = {
+
+  const body: TypographyDefinition = {
     fontFamily,
     fontSize: getSize(parsedSize, 1),
     lineHeight: 1.19,
-    fontWeight: 'normal',
-  }
+    fontWeight: 'normal'
+  };
 
-  const bodyLarge: TypographDefinition = {
+  const bodyLarge: TypographyDefinition = {
     fontFamily,
     fontSize: getSize(parsedSize, 1.25),
     lineHeight: 1.22,
-    fontWeight: 'normal',
-  }
+    fontWeight: 'normal'
+  };
 
-  const navigation: TypographDefinition = {
+  const navigation: TypographyDefinition = {
     fontFamily,
     fontSize: getSize(parsedSize, 1.5),
     lineHeight: 1.19,
-    fontWeight: 'normal',
-  }
+    fontWeight: 'normal'
+  };
 
-  const heading3: TypographDefinition = {
+  const heading3: TypographyDefinition = {
     fontFamily,
     fontSize: getSize(parsedSize, 1.5),
     lineHeight: 1.08,
-    fontWeight: 'bold',
-  }
+    fontWeight: 'bold'
+  };
 
   return {
     body,
     bodyLarge,
     navigation,
-    heading3,
-  }
+    heading3
+  };
 }
-
