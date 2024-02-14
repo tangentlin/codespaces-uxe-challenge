@@ -1,15 +1,18 @@
-import { Palette } from '../theme/Theme';
+import { Palette, Theme } from '../theme/Theme';
 import { darkPalette, lightPalette } from '../theme/palette';
 import { createSpacing } from '../theme/spacing';
 import { createTypography } from '../theme/typography';
+import { createIconSizeVariant } from './iconSize';
 
 export function createTheme(fontFamily: string, baseSize: string, spacingBaseSize: string, palette: Palette): Theme {
   const typography = createTypography(fontFamily, baseSize);
   const spacing = createSpacing(spacingBaseSize);
+  const iconSize = createIconSizeVariant('1rem');
   return {
     palette,
     typography,
-    spacing
+    spacing,
+    iconSize
   };
 }
 

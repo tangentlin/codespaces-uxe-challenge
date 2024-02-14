@@ -17,7 +17,8 @@ export function murmurHash(str: string): string {
 let counter = 0;
 export function newHashName(baseName: string): string {
   counter += 1;
-  return murmurHash(`${baseName}-${counter}`);
+  return `${baseName}-${counter}`;
+  // return murmurHash(`${baseName}-${counter}`);
 }
 
 export function newCssClassName(): string {

@@ -15,3 +15,12 @@ export function sanitizeCss(css: string): string {
 export function sanitizeCssClassName(className: string): string {
   return className;
 }
+
+/**
+ * Create call expression for calc function
+ * @param args
+ * @returns
+ */
+export function calc(...args: string[]): string {
+  return `calc(${args.join(' ')})`;
+}

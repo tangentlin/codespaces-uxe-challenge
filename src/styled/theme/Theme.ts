@@ -2,6 +2,7 @@ export interface Theme {
   palette: Palette;
   typography: Typography;
   spacing: Spacing;
+  iconSize: IconSizeVariants;
 }
 
 export interface Palette {
@@ -34,6 +35,7 @@ export interface Color {
 }
 
 export interface Typography {
+  baseSize: string;
   body: TypographyDefinition;
   bodyLarge: TypographyDefinition;
   navigation: TypographyDefinition;
@@ -48,9 +50,19 @@ export interface TypographyDefinition {
 }
 
 export interface Spacing {
+  xSmall: string;
   small: string;
   medium: string;
+  mediumLarge: string;
   large: string;
   xLarge: string;
   custom: (factor: number) => string;
 }
+export type SpacingVariant = keyof Omit<Spacing, 'custom'>;
+
+export interface IconSizeVariants {
+  small: string;
+  medium: string;
+  large: string;
+}
+export type IconSize = keyof IconSizeVariants;

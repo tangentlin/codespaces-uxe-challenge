@@ -2,7 +2,7 @@ import { Typography, TypographyDefinition } from './Theme';
 import { getSize, parseSize } from './styleUtil';
 
 export function createTypography(fontFamily: string, baseSize: string): Typography {
-  const parsedSize = parseSize(baseSize);
+  const parsedSize = parseSize('1rem');
 
   const body: TypographyDefinition = {
     fontFamily,
@@ -33,6 +33,7 @@ export function createTypography(fontFamily: string, baseSize: string): Typograp
   };
 
   return {
+    baseSize,
     body,
     bodyLarge,
     navigation,

@@ -12,7 +12,10 @@ export function getThemeGlobalCss(theme: Theme) {
       --color-foreground: ${theme.palette.text.default};
     }
 
-    body {
+    body,
+    button,
+    textarea {
+      font-size: ${theme.typography.baseSize};
       background-color: var(--color-background);
       color: var(--color-foreground);
       ${getTypographyCss(theme.typography.body)}
