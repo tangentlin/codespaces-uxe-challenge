@@ -2,8 +2,8 @@
 
 - [ ] Skeleton UI
   - [x] Tree list component
-  - [ ] Photo List Item
-  - [ ] Photo list
+  - [x] Photo List Item
+  - [x] Photo list
   - [x] Theme toggle
 - [ ] Refinement
   - [ ] Tree list accessibility with keyboard
@@ -13,6 +13,7 @@
   - [x] Export CSS token
   - [ ] API batch loading through DataLoader
   - [ ] Virtualization
+  - [ ] Localization
 
 ## Observations
 
@@ -25,5 +26,16 @@
 
 ### Mockup
 
-- Some spacings are 5-based, such as space between tiles, or space between icon and label
-- Some spacings are 4-based, space between dog name & pictures
+Below are ambiguities discovered while implementing the application, they can be resolved through
+working closely with designer to gain clarities
+
+- Spacing language
+  - Some spacings are 5-based, such as space between tiles, or space between icon and label
+  - Some spacings are 4-based, space between dog name & pictures
+  - Need to check
+- Responsive behavior
+  - How should UI behaves when browser resize
+  - Logo and Image Card variants, when would they be used?
+- Dark mode
+  - There is no dark mode design
+- Design tokens
