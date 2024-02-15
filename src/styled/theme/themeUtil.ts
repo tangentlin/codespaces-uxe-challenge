@@ -20,6 +20,15 @@ export function getThemeGlobalCss(theme: Theme) {
       color: var(--color-foreground);
       ${getTypographyCss(theme.typography.body)}
     }
+
+    @keyframes loading {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
   `;
 }
 

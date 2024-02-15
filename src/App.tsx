@@ -1,16 +1,11 @@
 import './App.css';
+import { Tree } from './components/tree/Tree';
 import { ThemeProvider } from './styled';
 
 function App() {
   return (
     <ThemeProvider mode="dark">
-      <div className="App">
-        <header className="App-header">
-          <img src="woofer.svg" className="App-logo" alt="logo" />
-          <p>Woofer</p>
-          <p className="small">An Innovation & Technology team challenge</p>
-        </header>
-      </div>
+      <Tree items={[]} isLoading={true} />;
     </ThemeProvider>
   );
 }

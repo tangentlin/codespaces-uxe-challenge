@@ -1,3 +1,4 @@
 export { calc } from './cssUtil';
+export { styled } from './emotionWrapper';
 export { injectGlobalStyle } from './injectStyle';
-export { css, styled } from './styled';
+export { css } from './styled';

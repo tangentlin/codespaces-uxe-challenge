@@ -1,9 +1,9 @@
-import memoize from 'micro-memoize';
-import { HTMLAttributes } from 'react';
-import { Theme, calc, styled, useTheme } from '../../styled';
-import { ChevronUp } from '../icon/Icon.stories';
+import { useMemo } from 'react';
+import { useTheme } from '../../styled';
+import ChevronUp from '../icon/ChevronUp';
 import { IconComponentType } from '../icon/types';
 import { HBox } from '../layout';
+import { createTreeListItemStyle, getLabelStyledComponent } from './TreeListIem.style';
 import { InternalTreeItem } from './models/TreeItem';
 
 export interface TreeListItemProps {
@@ -16,87 +16,25 @@ export interface TreeListItemProps {
   onSelect?: (data: InternalTreeItem) => void;
 }
 
-const MainLayout = styled('div')(
-  (theme: Theme) => `
-    padding: ${theme.spacing.xSmall};
-`
-);
-
-const IconContainer = styled<HTMLAttributes<{}>>('span')(
-  (theme: Theme) => `
-    display: inline-block;
-    margin-right: ${theme.spacing.small};
-`
-);
-
-const IconPlaceholder = styled('span')(
-  (theme: Theme) => `
-    display: inline-block;
-    width: ${theme.iconSize.medium};
-    height: ${theme.iconSize.medium};
-`
-);
-
-const Identity = styled(HBox)(
-  // Use icon size as height so the tree line item has the same height regardless of the icon presence
-  (theme: Theme) => `
-    color: ${theme.palette.text.default};
-    height: ${theme.iconSize.medium};
-    flex-grow: 1;
-    text-align: left;
-    flex-shrink: 1;
-`
-);
-
-const Disclosure = styled<HTMLAttributes<{}>>('button')(
-  // Use icon size as height so the tree line item has the same height regardless of the icon presence
-  (theme: Theme) => `
-    background: none;
-    border: none;
-    outline: none;
-    padding: 0;
-    width: ${theme.iconSize.medium};
-    height: ${theme.iconSize.medium};
-    flex-grow: 0;
-`
-);
-
-function getLabelStyledComponentImp(depth: number, theme: Theme) {
-  const depthPerUnit = theme.spacing.medium;
-
-  const labelMarginLeft = calc(`${depthPerUnit} * ${depth}`);
-
-  return styled<HTMLAttributes<HTMLLabelElement>>('label')`
-    margin-left: ${labelMarginLeft};
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  `;
-}
-
-const getLabelStyledComponent = memoize(getLabelStyledComponentImp, { maxSize: 20 });
-
 export const TreeListItem: React.FC<TreeListItemProps> = (props) => {
   // For simplicity, icon is only shown when item is selected
   const { icon: Icon, iconAltText, data, expanded = false, selected = false, onToggleExpand, onSelect } = props;
   const { theme } = useTheme();
+  const { Disclosure, Identity, IconPlaceholder, MainLayout, IconContainer } = createTreeListItemStyle(theme);
 
   const hasIcon = Icon != null;
   const showIcon = selected && hasIcon;
   const hasChildren = data.children != null && data.children.length > 0;
 
   const Label = getLabelStyledComponent(data.depth, theme);
-
   const identity_onClick = (e: React.MouseEvent) => {
-    // e.preventDefault();
-    console.log('identity_onClick');
     onSelect?.(data);
+    if (hasChildren) {
+      onToggleExpand?.(data);
+    }
   };
 
   const disclosure_onClick = () => {
-    console.log('disclosure_onClick');
     onToggleExpand?.(data);
   };
 
@@ -109,8 +47,19 @@ export const TreeListItem: React.FC<TreeListItemProps> = (props) => {
     );
   }
 
+  const className = useMemo(() => {
+    const classNames: string[] = [];
+    if (selected) {
+      classNames.push('selected');
+    }
+    if (expanded) {
+      classNames.push('expanded');
+    }
+    return classNames.join(' ');
+  }, [selected]);
+
   return (
-    <MainLayout>
+    <MainLayout className={className}>
       <HBox gap="medium">
         <Identity gap="small">
           {icon}

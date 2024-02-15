@@ -1,6 +1,7 @@
-export interface TreeItem {
+export interface TreeItem<T = {}> {
   id: string;
   label: string;
+  data: T;
   children?: TreeItem[];
 
   // Alternatively, you can use parentId to build the tree which is a lot more friendly
@@ -9,11 +10,11 @@ export interface TreeItem {
   // parentId?: string;
 }
 
-export interface InternalTreeItem<DataT = TreeItem> {
+export interface InternalTreeItem<T = {}> {
   id: string;
-  data: DataT;
-  children?: InternalTreeItem[];
-  parent?: InternalTreeItem<DataT>;
+  data: TreeItem<T>;
+  children?: InternalTreeItem<T>[];
+  parent?: InternalTreeItem<T>;
   /**
    * The depth of the tree item, starting from 0
    */

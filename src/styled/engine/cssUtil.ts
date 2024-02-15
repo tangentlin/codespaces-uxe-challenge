@@ -22,5 +22,5 @@ export function sanitizeCssClassName(className: string): string {
  * @returns
  */
 export function calc(...args: string[]): string {
-  return `calc(${args.join(' ')})`;
+  return `calc(${args.join(' + ')})`;
 }

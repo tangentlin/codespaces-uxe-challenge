@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Dog } from '../icon/Icon.stories';
+import Dog from '../icon/Dog';
 import { VBox } from '../layout';
 import { TreeListItem } from './TreeListItem';
 import { InternalTreeItem } from './models/TreeItem';
@@ -16,7 +16,8 @@ const level1: InternalTreeItem = {
   depth: 0,
   data: {
     id: '1',
-    label: 'Level 1'
+    label: 'Level 1',
+    data: {}
   },
   children: [
     {
@@ -24,7 +25,8 @@ const level1: InternalTreeItem = {
       depth: 1,
       data: {
         id: '1.1',
-        label: 'Level 1.1'
+        label: 'Level 1.1',
+        data: {}
       }
     }
   ]
@@ -35,7 +37,8 @@ const level2: InternalTreeItem = {
   depth: 1,
   data: {
     id: '2',
-    label: 'Level 2'
+    label: 'Level 2',
+    data: {}
   },
   children: [
     {
@@ -43,7 +46,8 @@ const level2: InternalTreeItem = {
       depth: 2,
       data: {
         id: '2.1',
-        label: 'Level 2.1'
+        label: 'Level 2.1',
+        data: {}
       }
     }
   ]
@@ -54,7 +58,8 @@ const level3: InternalTreeItem = {
   depth: 2,
   data: {
     id: '3',
-    label: 'Level 3'
+    label: 'Level 3',
+    data: {}
   }
 };
 
@@ -63,7 +68,8 @@ const longLabel: InternalTreeItem = {
   depth: 2,
   data: {
     id: '3.1',
-    label: 'This is a very long label that should be truncated'
+    label: 'This is a very long label that should be truncated',
+    data: {}
   }
 };
 
