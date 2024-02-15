@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useTheme } from '../../styled';
+import ChevronDown from '../icon/ChevronDown';
 import ChevronUp from '../icon/ChevronUp';
 import { IconComponentType } from '../icon/types';
 import { HBox } from '../layout';
@@ -68,9 +69,7 @@ export const TreeListItem: React.FC<TreeListItemProps> = (props) => {
           </Label>
         </Identity>
         {hasChildren ? (
-          <Disclosure onClick={disclosure_onClick}>
-            <ChevronUp />
-          </Disclosure>
+          <Disclosure onClick={disclosure_onClick}>{expanded ? <ChevronDown /> : <ChevronUp />}</Disclosure>
         ) : null}
       </HBox>
     </MainLayout>

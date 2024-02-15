@@ -35,7 +35,7 @@ export type TreeProps = TreeLoadingProps | TreeLoadedProps;
 // TODO: Add virtualization for better performance on larger tree
 export const Tree: FC<TreeProps> = (props) => {
   const { items, defaultSelectedId, defaultExpandedIds, onSelect, icon, loadingFauxItems = 10, isLoading } = props;
-  const { visibleItems, toggle, select, selected } = useTree(items, defaultSelectedId, defaultExpandedIds);
+  const { visibleItems, toggle, select, selected, expandedIds } = useTree(items, defaultSelectedId, defaultExpandedIds);
   const { theme } = useTheme();
   const { FauxItem } = createTreeStyle(theme);
 
@@ -76,7 +76,7 @@ export const Tree: FC<TreeProps> = (props) => {
           icon={icon}
           iconAltText={item.data.label}
           data={item}
-          expanded={defaultExpandedIds?.has(item.id)}
+          expanded={expandedIds.has(item.id)}
           selected={item.id === selected?.id}
           onSelect={item_onSelect}
           onToggleExpand={item_onToggleExpand}

@@ -12,11 +12,6 @@ export const createToggleSwitchStyle = memoize((theme: Theme) => {
   const sliderPositionX = `calc( ${sliderGap} + ${borderWidth} )`;
   const sliderPositionY = `calc( ${sliderGap} )`;
 
-  console.log({
-    sliderSize,
-    sliderPositionX
-  });
-
   const Toggle = styled('label')`
     position: relative;
     display: inline-block;

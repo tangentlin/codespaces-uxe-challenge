@@ -14,7 +14,9 @@ type Story = StoryObj<typeof Navigation>;
 export const Default = () => (
   <div style={{ width: '290px', height: '90vh' }}>
     <Navigation>
-      <BreedList breeds={breedListMock} defaultExpandedIds={new Set(allDogId)} />
+      <div style={{ width: '245px', marginLeft: '23px' }}>
+        <BreedList breeds={breedListMock} defaultExpandedIds={new Set(allDogId)} />
+      </div>
     </Navigation>
   </div>
 );
