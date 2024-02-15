@@ -1,19 +1,21 @@
-import './App.css';
+import { createAppStyle } from './App.style';
+import { BreedListLoader } from './components/breedList/BreedListLoader';
 import { Navigation } from './components/navigation/Navigation';
-import { ThemeProvider } from './styled';
+import { useTheme } from './styled';
 
 function App() {
+  const { theme } = useTheme();
+  const { MainLayout, ContentZone, MenuContainer, NavigationZone } = createAppStyle(theme);
   return (
-    <ThemeProvider mode="light">
-      {/* <div className="App">
-        <header className="App-header">
-          <img src="woofer.svg" className="App-logo" alt="logo" />
-          <p>Woofer</p>
-          <p className="small">An Innovation & Technology team challenge</p>
-        </header>
-      </div> */}
-      <Navigation />
-    </ThemeProvider>
+    <MainLayout>
+      <NavigationZone>
+        <Navigation>
+          <MenuContainer>
+            <BreedListLoader />
+          </MenuContainer>
+        </Navigation>
+      </NavigationZone>
+    </MainLayout>
   );
 }
 
