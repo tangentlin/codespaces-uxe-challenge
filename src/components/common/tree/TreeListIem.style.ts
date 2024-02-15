@@ -6,7 +6,6 @@ export const createTreeListItemStyle = memoize((theme: Theme) => {
   const Disclosure = styled('button')`
     background: none;
     border: none;
-    outline: none;
     padding: 0;
     width: ${theme.iconSize.medium};
     height: ${theme.iconSize.medium};

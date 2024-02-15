@@ -11,7 +11,11 @@ export function HBox<T>(props: BoxProps & T) {
     gap: ${theme.spacing[gap]};
     align-items: ${align};
   `;
-  return <Layout className={className}>{children}</Layout>;
+  return (
+    <Layout tabIndex={props.tabIndex} role={props.role} onClick={props.onClick} className={className}>
+      {children}
+    </Layout>
+  );
 }
 
 export function VBox<T>(props: BoxProps & T) {
@@ -24,5 +28,9 @@ export function VBox<T>(props: BoxProps & T) {
     gap: ${theme.spacing[gap]};
     align-items: ${align};
   `;
-  return <Layout className={className}>{children}</Layout>;
+  return (
+    <Layout tabIndex={props.tabIndex} role={props.role} onClick={props.onClick} className={className}>
+      {children}
+    </Layout>
+  );
 }

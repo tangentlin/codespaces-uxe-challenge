@@ -15,4 +15,8 @@ export interface BoxProps {
   element?: keyof JSX.IntrinsicElements;
   align?: 'start' | 'center' | 'end';
   naturalWidth?: boolean;
+
+  onClick?: (evt: React.MouseEvent) => void;
+  role?: string;
+  tabIndex?: number;
 }

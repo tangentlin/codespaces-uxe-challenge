@@ -41,11 +41,7 @@ export const TreeListItem: React.FC<TreeListItemProps> = (props) => {
 
   let icon: JSX.Element | null = null;
   if (hasIcon) {
-    icon = (
-      <IconContainer onClick={identity_onClick} role="button">
-        {showIcon ? <Icon size="medium" title={iconAltText} /> : <IconPlaceholder />}
-      </IconContainer>
-    );
+    icon = <IconContainer>{showIcon ? <Icon size="medium" title={iconAltText} /> : <IconPlaceholder />}</IconContainer>;
   }
 
   const className = useMemo(() => {
@@ -62,11 +58,9 @@ export const TreeListItem: React.FC<TreeListItemProps> = (props) => {
   return (
     <MainLayout className={className}>
       <HBox gap="medium">
-        <Identity gap="small">
+        <Identity gap="small" onClick={identity_onClick} role="button" tabIndex={0}>
           {icon}
-          <Label onClick={identity_onClick} role="button" title={data.data.label}>
-            {data.data.label}
-          </Label>
+          <Label title={data.data.label}>{data.data.label}</Label>
         </Identity>
         {hasChildren ? (
           <Disclosure
