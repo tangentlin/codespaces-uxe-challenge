@@ -1,4 +1,4 @@
-import { TreeItem } from '../components/';
+import { TreeItem } from '../components/common';
 import { BreedListDto } from '../models/dto';
 import { initialCaps } from './stringUtil';
 
@@ -49,4 +49,16 @@ const specialTranslations: Map<string, string> = new Map([
 ]);
 export function getBreedName(id: string): string {
   return specialTranslations.get(id) ?? initialCaps(id);
+}
+
+let unknownCount = 0;
+export function deriveIdFromImagePath(imageUrl: string): string {
+  const lastSlash = imageUrl.lastIndexOf('/');
+  if (lastSlash === -1) {
+    // Unlikely to happen, but just in case
+    unknownCount += 1;
+    return `Unknown-${unknownCount.toString().padStart(3, '0')}`;
+  }
+
+  return imageUrl.substring(lastSlash + 1);
 }
