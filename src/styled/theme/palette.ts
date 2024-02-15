@@ -13,6 +13,18 @@ const lightSecondary: Color = {
 
 const lightTextColor = '#2F3A4B';
 const lightBackgroundColor = '#FFF8F2';
+const lightNeutral: Palette['neutral'] = {
+  50: '#ebf0fd',
+  100: '#d0dcec',
+  200: '#b7c3d8',
+  300: '#9babc4',
+  400: '#8698b3',
+  500: '#7185a3',
+  600: '#637692',
+  700: '#52627a',
+  800: '#424f63',
+  900: '#2f3a4b'
+};
 
 export const lightPalette: Palette = {
   background: {
@@ -28,22 +40,14 @@ export const lightPalette: Palette = {
     selected: '#a0c0d5',
     hover: '#e2f0f8'
   },
-  neutral: {
-    50: '#ebf0fd',
-    100: '#d0dcec',
-    200: '#b7c3d8',
-    300: '#9babc4',
-    400: '#8698b3',
-    500: '#7185a3',
-    600: '#637692',
-    700: '#52627a',
-    800: '#424f63',
-    900: '#2f3a4b'
-  },
+  neutral: lightNeutral,
   primary: lightPrimary,
   secondary: lightSecondary,
   divider: '#b9b9b9',
-  border: '#b1b1b9'
+  border: {
+    default: lightNeutral[900],
+    light: lightNeutral[200]
+  }
 };
 
 // Colors generated from https://matieralpalettes.com
@@ -60,6 +64,19 @@ const darkSecondary: Color = {
 const darkTextColor = '#FFF8F2';
 const darkBackgroundColor = '#2F3A4B';
 
+const darkNeutral: Palette['neutral'] = {
+  50: '#2f3a4b',
+  100: '#424f63',
+  200: '#52627a',
+  300: '#637692',
+  400: '#7185a3',
+  500: '#8698b3',
+  600: '#9babc4',
+  700: '#b7c3d8',
+  800: '#d0dcec',
+  900: '#ebf0fd'
+};
+
 export const darkPalette: Palette = {
   background: {
     default: darkBackgroundColor,
@@ -69,18 +86,7 @@ export const darkPalette: Palette = {
     default: darkTextColor,
     disabled: '#dab49a'
   },
-  neutral: {
-    50: '#2f3a4b',
-    100: '#424f63',
-    200: '#52627a',
-    300: '#637692',
-    400: '#7185a3',
-    500: '#8698b3',
-    600: '#9babc4',
-    700: '#b7c3d8',
-    800: '#d0dcec',
-    900: '#ebf0fd'
-  },
+  neutral: darkNeutral,
   // #5a6b75
   interactivity: {
     active: '#a0c0d5', // 500
@@ -90,5 +96,8 @@ export const darkPalette: Palette = {
   primary: darkPrimary,
   secondary: darkSecondary,
   divider: '#b9b9b9',
-  border: '#b1b1b9'
+  border: {
+    default: darkNeutral[900],
+    light: darkNeutral[200]
+  }
 };

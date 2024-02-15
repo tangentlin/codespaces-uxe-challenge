@@ -38,7 +38,10 @@ export interface Palette {
   primary: Color;
   secondary: Color;
   divider: string;
-  border: string;
+  border: {
+    default: string;
+    light: string;
+  };
 }
 
 export interface Color {
