@@ -9,8 +9,8 @@ import { InternalTreeItem, TreeItem } from './models/TreeItem';
 import { useTree } from './useTree';
 
 export interface TreePropsBase {
-  selectedId?: string;
-  expandedIds?: Set<string>;
+  defaultSelectedId?: string;
+  defaultExpandedIds?: Set<string>;
   icon?: IconComponentType;
   iconAltText?: string;
   /**
@@ -34,8 +34,8 @@ export type TreeProps = TreeLoadingProps | TreeLoadedProps;
 
 // TODO: Add virtualization for better performance on larger tree
 export const Tree: FC<TreeProps> = (props) => {
-  const { items, selectedId, expandedIds, onSelect, icon, loadingFauxItems = 10, isLoading } = props;
-  const { visibleItems, toggle, select, selected } = useTree(items, selectedId, expandedIds);
+  const { items, defaultSelectedId, defaultExpandedIds, onSelect, icon, loadingFauxItems = 10, isLoading } = props;
+  const { visibleItems, toggle, select, selected } = useTree(items, defaultSelectedId, defaultExpandedIds);
   const { theme } = useTheme();
   const { FauxItem } = createTreeStyle(theme);
 
@@ -56,7 +56,7 @@ export const Tree: FC<TreeProps> = (props) => {
 
   if (isLoading) {
     return (
-      <VBox gap="mediumLarge">
+      <VBox gap="medium">
         {Array(loadingFauxItems)
           .fill(0)
           .map((_, index) => (
@@ -69,14 +69,14 @@ export const Tree: FC<TreeProps> = (props) => {
   }
 
   return (
-    <VBox gap="mediumLarge">
+    <VBox gap="medium">
       {visibleItems.map((item) => (
         <TreeListItem
           key={item.id}
           icon={icon}
           iconAltText={item.data.label}
           data={item}
-          expanded={expandedIds?.has(item.id)}
+          expanded={defaultExpandedIds?.has(item.id)}
           selected={item.id === selected?.id}
           onSelect={item_onSelect}
           onToggleExpand={item_onToggleExpand}

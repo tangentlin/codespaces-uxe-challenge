@@ -7,6 +7,8 @@ import { Tree } from '../tree/Tree';
 export interface BreedListProps {
   breeds?: BreedListDto;
   isLoading?: boolean;
+  defaultSelectedId?: string;
+  defaultExpandedIds?: Set<string>;
   onSelect?: (data: DogBreedTreeItem) => void;
 }
 

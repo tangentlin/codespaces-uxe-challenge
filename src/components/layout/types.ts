@@ -13,4 +13,6 @@ export interface BoxProps {
    * @default div
    */
   element?: keyof JSX.IntrinsicElements;
+  align?: 'start' | 'center' | 'end';
+  naturalWidth?: boolean;
 }

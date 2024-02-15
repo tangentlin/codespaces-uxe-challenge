@@ -8,11 +8,13 @@ export type ThemeMode = 'light' | 'dark';
 
 export type ThemeSetting = ThemeMode | Theme;
 
+export type ThemeModeWithCustom = ThemeMode | 'custom';
+
 export interface ThemeContextValue {
   /**
    * The current semantic name of the theme
    */
-  mode: ThemeMode | 'custom';
+  mode: ThemeModeWithCustom;
   /**
    * Actual theme object
    */
@@ -32,7 +34,13 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
   const { children, mode } = props;
   const [theme, setTheme] = useState<ThemeSetting>(mode);
   const resolvedTheme = getTheme(theme);
-  const resolvedMode = typeof theme === 'object' ? 'custom' : (mode as ThemeMode);
+
+  let resolvedMode: ThemeModeWithCustom = 'light';
+  if (typeof theme === 'object') {
+    resolvedMode = 'custom';
+  } else {
+    resolvedMode = theme;
+  }
 
   // Memoize the return value to avoid unnecessary re-renders
   const value = useMemo<ThemeContextValue>(
